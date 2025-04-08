@@ -2,7 +2,7 @@ services:
   - type: web
     name: contact-manager
     env: python
-    buildCommand: cd contact_manager && pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && cd contact_manager && pip install -r requirements.txt
     startCommand: cd contact_manager && gunicorn app:app
     envVars:
       - key: PYTHON_VERSION
