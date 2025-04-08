@@ -71,18 +71,11 @@ class ContactManager:
                 print("Invalid phone number format")
                 return False
 
-            category = input("Category (optional): ").strip()
-            
-            # Add birthday field
-            birthday = input("Birthday (DD/MM/YYYY) (optional): ").strip()
-            
             person = {
                 "name": name,
                 "age": age,
                 "email": email,
                 "phone": phone,
-                "category": category,
-                "birthday": birthday,
                 "created_at": datetime.now().isoformat(),
                 "last_modified": datetime.now().isoformat()
             }
@@ -133,14 +126,11 @@ class ContactManager:
                         print("Invalid phone number format")
                         return
 
-                    category = input(f"Category [{person['category']}]: ").strip() or person['category']
-
                     person.update({
                         "name": name,
                         "age": age,
                         "email": email,
                         "phone": phone,
-                        "category": category,
                         "last_modified": datetime.now().isoformat()
                     })
                     
@@ -168,46 +158,20 @@ class ContactManager:
                 print("Please enter a valid number")
 
     def search(self):
-        print("\nSearch by:")
-        print("1. Name")
-        print("2. Email")
-        print("3. Phone")
-        print("4. Category")
+        search_name = input("Search for a name: ")
+        result = []
         
-        while True:
-            try:
-                choice = int(input("Enter your choice (1-4): "))
-                if 1 <= choice <= 4:
-                    break
-                print("Please enter a number between 1 and 4")
-            except ValueError:
-                print("Please enter a valid number")
-
-        search_term = input("Enter search term: ").strip().lower()
-        results = []
-
         for person in self.people:
-            if choice == 1 and search_term in person["name"].lower():
-                results.append(person)
-            elif choice == 2 and search_term in person["email"].lower():
-                results.append(person)
-            elif choice == 3 and search_term in person["phone"].lower():
-                results.append(person)
-            elif choice == 4 and search_term in person["category"].lower():
-                results.append(person)
-
-        if results:
-            print("\nSearch Results:")
-            self.display_people(results)
-        else:
-            print("No results found")
+            name = person["name"]
+            if search_name in name.lower():
+                result.append(person)
+        self.display_people(result)
 
     def display_person(self, person: Dict):
         print(f"Name: {person['name']}")
         print(f"Age: {person['age']}")
         print(f"Email: {person['email']}")
         print(f"Phone: {person['phone']}")
-        print(f"Category: {person['category']}")
         print(f"Last Modified: {person['last_modified']}")
 
     def display_people(self, people: List[Dict]):
@@ -217,13 +181,12 @@ class ContactManager:
 
         print("\nContacts:")
         print("-" * 80)
-        print(f"{'No.':<5} {'Name':<20} {'Age':<5} {'Email':<30} {'Phone':<15} {'Category':<15}")
+        print(f"{'No.':<5} {'Name':<20} {'Age':<5} {'Email':<30} {'Phone':<15}")
         print("-" * 80)
         
         for i, person in enumerate(people, 1):
             print(f"{i:<5} {person['name'][:20]:<20} {person['age']:<5} "
-                  f"{person['email'][:30]:<30} {person['phone'][:15]:<15} "
-                  f"{person['category'][:15]:<15}")
+                  f"{person['email'][:30]:<30} {person['phone'][:15]:<15}")
         print("-" * 80)
 
     def sort_contacts(self):
