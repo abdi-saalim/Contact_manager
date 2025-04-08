@@ -3,26 +3,74 @@
 <head>
     <title>Contact Manager</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container mt-4">
-        <h1 class="mb-4">Contact Manager</h1>
-        
-        <!-- Search Bar -->
-        <div class="mb-3">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search contacts...">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <i class="fas fa-address-book"></i>
+                        Contact Manager
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">
+                                    <i class="fas fa-list"></i> View Contacts
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="add.html">
+                                    <i class="fas fa-user-plus"></i> Add Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
+    </header>
 
-        <!-- Add Contact Button -->
-        <a href="add.html" class="btn btn-primary mb-3">Add New Contact</a>
+    <!-- Main Content -->
+    <main class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <!-- Search Bar -->
+                <div class="search-container mb-4">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search contacts...">
+                    </div>
+                </div>
 
-        <!-- Contacts List -->
-        <div id="contactsList" class="list-group">
-            <!-- Contacts will be loaded here -->
+                <!-- Contacts List -->
+                <div id="contactsList" class="list-group">
+                    <!-- Contacts will be loaded here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="text-center py-5 d-none">
+                    <i class="fas fa-address-book fa-4x mb-3 text-muted"></i>
+                    <h3>No Contacts Found</h3>
+                    <p class="text-muted">Add your first contact to get started</p>
+                    <a href="add.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Add Contact
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html> 

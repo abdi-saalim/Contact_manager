@@ -1,24 +1,53 @@
+/* General Styles */
 body {
     background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.container {
-    max-width: 800px;
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
 }
 
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.navbar-brand i {
+    margin-right: 0.5rem;
+}
+
+/* Contact List Styles */
 .contact-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
     background-color: white;
-    border-radius: 0.25rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.contact-info {
-    flex-grow: 1;
+.contact-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.contact-info h5 {
+    margin-bottom: 0.5rem;
+    color: #212529;
+}
+
+.contact-info p {
+    margin-bottom: 0.25rem;
+    color: #6c757d;
 }
 
 .contact-actions {
@@ -26,12 +55,80 @@ body {
     gap: 0.5rem;
 }
 
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+/* Search Bar Styles */
+.search-container {
+    position: relative;
+}
+
+.search-container .input-group-text {
+    background-color: white;
+    border-right: none;
+}
+
+.search-container .form-control {
+    border-left: none;
+    padding-left: 0;
+}
+
+.search-container .form-control:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+/* Form Styles */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    border-radius: 0.5rem 0.5rem 0 0 !important;
 }
 
 .form-control:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+}
+
+/* Empty State Styles */
+#emptyState {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#emptyState i {
+    color: #dee2e6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .contact-actions {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: flex-end;
+    }
 } 

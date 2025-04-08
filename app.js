@@ -57,18 +57,37 @@ document.addEventListener('DOMContentLoaded', function() {
 // Display Contacts
 function displayContacts(contacts = contactManager.contacts) {
     const contactsList = document.getElementById('contactsList');
+    const emptyState = document.getElementById('emptyState');
+    
     if (!contactsList) return;
+
+    if (contacts.length === 0) {
+        contactsList.classList.add('d-none');
+        emptyState.classList.remove('d-none');
+        return;
+    }
+
+    contactsList.classList.remove('d-none');
+    emptyState.classList.add('d-none');
 
     contactsList.innerHTML = contacts.map((contact, index) => `
         <div class="contact-item">
             <div class="contact-info">
                 <h5>${contact.name}</h5>
-                <p class="mb-1">Age: ${contact.age}</p>
-                <p class="mb-1">Email: ${contact.email}</p>
-                <p class="mb-0">Phone: ${contact.phone}</p>
+                <p class="mb-1">
+                    <i class="fas fa-birthday-cake me-2"></i>Age: ${contact.age}
+                </p>
+                <p class="mb-1">
+                    <i class="fas fa-envelope me-2"></i>Email: ${contact.email}
+                </p>
+                <p class="mb-0">
+                    <i class="fas fa-phone me-2"></i>Phone: ${contact.phone}
+                </p>
             </div>
             <div class="contact-actions">
-                <button class="btn btn-danger btn-sm" onclick="deleteContact(${index})">Delete</button>
+                <button class="btn btn-danger" onclick="deleteContact(${index})">
+                    <i class="fas fa-trash me-2"></i>Delete
+                </button>
             </div>
         </div>
     `).join('');
